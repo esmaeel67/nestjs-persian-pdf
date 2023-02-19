@@ -1,0 +1,104 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title سفارش
+        style.
+            @font-face {
+                font-family: 'IRANYekanMedium'; 
+                src: url('data:font/truetype;charset=utf-8;base64,#{IRANYekanMedium}'); 
+                font-weight: normal;
+                font-style: normal;
+            } 
+            @font-face {
+                font-family: 'IRANYekanBold'; 
+                src: url('data:font/truetype;charset=utf-8;base64,#{IRANYekanBold}'); 
+                font-weight: normal;
+                font-style: normal;
+            } 
+            @font-face {
+                font-family: 'IRANYekanLight'; 
+                src: url('data:font/truetype;charset=utf-8;base64,#{IRANYekanLight}'); 
+                font-weight: normal;
+                font-style: normal;
+            } 
+            body{
+                font-family: 'IRANYekanMedium';      
+                font-weight: normal;
+                font-style: normal;
+                font-size: 10px;
+                direction: rtl;
+                text-align: justify;
+                line-height: 1.2rem;
+            }
+            h2,
+            h1{               
+                font-family: 'IRANYekanBold';                      
+                font-size:.8rem;
+                text-align: center;                
+                margin: 0;
+                margin-top: .2rem;
+            }            
+            h4{                
+                font-family: 'IRANYekanBold'; 
+                font-size:.8rem;
+                display: block;
+                margin: 0;
+                margin-top: .3rem;
+                margin-bottom: .1rem;
+            }
+            .provider{                
+                font-size:.7rem;
+                font-family: 'IRANYekanMedium';
+               
+            }
+            .provider p{                
+                margin:0;                
+                font-size:.7rem;               
+            }
+            .reciver{                
+                font-family: 'IRANYekanMedium';                 
+                font-size:.7rem;
+            }
+            .reciver p{                
+                margin:0;               
+                font-size:.7rem;
+            }
+            .date{
+                display: inline-block;
+                direction:ltr
+            }
+    body(style="")
+        h1 شماره سفارش : 
+            span(style="display: inline-block;direction:ltr") #{order_number || ''}
+        h2 تاریخ :  
+            span.date #{order_date || ''}
+        h4(style="") فرستنده :        
+        .provider
+            p  نام فروشگاه : فروشگاه سورپرایزین             
+            p  آدرس اینترنتی :  
+                span www.surprisin.com
+            p  تلفن فروشگاه:   
+                span.date  0919XXXXXXX
+            p  کدپستی فروشگاه : 1981875413 
+            p  آدرس :  تهران، ملاصدرا ، خیابان زاینده رود غربی پلاک ۶ واحد ۲
+            p  آدرس اینترنتی :  
+                span www.surprisin.com     
+        h4(style="") گیرنده :
+        .reciver
+            p نام: 
+                span #{full_name}
+            p تلفن : 
+                span.date #{phone_number}
+            p تاریخ ارسال: 
+                span.date #{order_send_date}
+            p آدرس: 
+                span #{address}
+            p  کدپستی: 
+                span.date #{zip_code}
+            p پلاک :
+                span.date #{no}
+            p  واحد: 
+                span.date #{unit}   
+        //- img(style="width:40px;heigth:40px" src="data:image/jpg;base64," + image_logo)

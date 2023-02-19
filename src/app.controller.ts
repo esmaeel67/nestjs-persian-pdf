@@ -20,16 +20,12 @@ export class AppController {
 
   @Get()
   async getHello(@Res() res: Response): Promise<any> {
-    res.set({
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename=example.pdf',
-      attachment: `filename=test.pdf`,
-    });
+    console.log('request : ');
 
     const image_logo = await this.bufferFile('/assets/logo.png');
-    const IRANYekanLight = await this.bufferFile('font irl');
-    const IRANYekanMedium = await this.bufferFile('font irl');
-    const IRANYekanBold = await this.bufferFile('font irl');
+    const IRANYekanLight = await this.bufferFile('font url');
+    const IRANYekanMedium = await this.bufferFile('font url');
+    const IRANYekanBold = await this.bufferFile('font url');
 
     const buffer = await this.orderService.generatePDFToBuffer('order', {
       width: 400,
@@ -51,6 +47,11 @@ export class AppController {
         image_logo: image_logo,
       },
     } as any);
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': 'attachment; filename=example.pdf',
+      attachment: `filename=test.pdf`,
+    });
     res.send(buffer);
     return;
   }
